@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition template="include/template.xhtml">
+		<ui:define name="title">Liste der Veranstaltungen</ui:define>
+		<ui:define name="maincol">
+			<h:form>
+				<h:dataTable var="v" value="#{veranlist.list}"
+					binding="#{veranlist.dataTable}">
+					<h:column>
+						<f:facet name="header">
+							#
+						</f:facet>
+						<h:outputText
+							value="${(veranlist.page - 1) * veranlist.rowsPerPage + (veranlist.dataTable.rowIndex + 1)}." />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:commandLink actionListener="#{veranlist.setSortByAction}">
+								<f:attribute name="field" value="veranstaltungId" />
+								<h:outputText value="ID" />
+							</h:commandLink>
+							<h:graphicImage library="icons" name="bullet_arrow_down.png"
+								rendered="${veranlist.sortBy eq 'veranstaltungId' and veranlist.sortDir eq 'ASC'}" />
+							<h:graphicImage library="icons" name="bullet_arrow_up.png"
+								rendered="${veranlist.sortBy eq 'veranstaltungId' and veranlist.sortDir eq 'DESC'}" />
+						</f:facet>
+						<h:outputText value="#{v.veranstaltungId}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Studiengang" />
+						</f:facet>
+						<h:outputText value="#{v.modul.studiengang.bezeichnung}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:commandLink actionListener="#{veranlist.setSortByAction}">
+								<f:attribute name="field" value="modul" />
+								<h:outputText value="Modul" />
+							</h:commandLink>
+							<h:graphicImage library="icons" name="bullet_arrow_down.png"
+								rendered="${veranlist.sortBy eq 'modul' and veranlist.sortDir eq 'ASC'}" />
+							<h:graphicImage library="icons" name="bullet_arrow_up.png"
+								rendered="${veranlist.sortBy eq 'modul' and veranlist.sortDir eq 'DESC'}" />
+						</f:facet>
+						<h:outputText value="#{v.modul.bezeichnung}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:commandLink actionListener="#{veranlist.setSortByAction}">
+								<f:attribute name="field" value="veranstaltungsTyp" />
+								<h:outputText value="Typ" />
+							</h:commandLink>
+							<h:graphicImage library="icons" name="bullet_arrow_down.png"
+								rendered="${veranlist.sortBy eq 'veranstaltungsTyp' and veranlist.sortDir eq 'ASC'}" />
+							<h:graphicImage library="icons" name="bullet_arrow_up.png"
+								rendered="${veranlist.sortBy eq 'veranstaltungsTyp' and veranlist.sortDir eq 'DESC'}" />
+						</f:facet>
+						<h:outputText value="#{v.veranstaltungsTyp.bezeichnung}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:commandLink actionListener="#{veranlist.setSortByAction}">
+								<f:attribute name="field" value="dauer" />
+								<h:outputText value="Dauer" />
+							</h:commandLink>
+							<h:graphicImage library="icons" name="bullet_arrow_down.png"
+								rendered="${veranlist.sortBy eq 'dauer' and veranlist.sortDir eq 'ASC'}" />
+							<h:graphicImage library="icons" name="bullet_arrow_up.png"
+								rendered="${veranlist.sortBy eq 'dauer' and veranlist.sortDir eq 'DESC'}" />
+						</f:facet>
+						<h:outputText value="#{v.dauer}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:commandLink actionListener="#{veranlist.setSortByAction}">
+								<f:attribute name="field" value="maxTeilnehmer" />
+								<h:outputText value="Max. Teilnehmer" />
+							</h:commandLink>
+							<h:graphicImage library="icons" name="bullet_arrow_down.png"
+								rendered="${veranlist.sortBy eq 'maxTeilnehmer' and veranlist.sortDir eq 'ASC'}" />
+							<h:graphicImage library="icons" name="bullet_arrow_up.png"
+								rendered="${veranlist.sortBy eq 'maxTeilnehmer' and veranlist.sortDir eq 'DESC'}" />
+						</f:facet>
+						<h:outputText value="#{v.maxTeilnehmer}" />
+					</h:column>
+					<h:column>
+						<h:commandButton actionListener="#{veranDetailB.select}" action="veranDetail" value="Bearbeiten">
+							<f:attribute name="veran_id" value="#{v.veranstaltungId}" />
+						</h:commandButton>
+					</h:column>
+					<f:facet name="footer">
+						<ui:include src="include/pager.xhtml">
+							<ui:param name="list" value="#{veranlist}" />
+						</ui:include>
+					</f:facet>
+				</h:dataTable>
+			</h:form>
+		</ui:define>
+		<ui:define name="rightcol">
+			<h2>Veranstaltung filtern</h2>
+			<h:form>
+				<p>
+					<h:outputLabel for="studiengangfilter" value="Studiengang: " />
+					<br />
+					<h:selectOneMenu id="studiengangfilter"
+						value="#{veranlist.studiengangFilter}">
+						<f:selectItems value="#{studiengang.studiengangList}" />
+					</h:selectOneMenu>
+				</p>
+				<h:commandButton value="Filtern" />
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

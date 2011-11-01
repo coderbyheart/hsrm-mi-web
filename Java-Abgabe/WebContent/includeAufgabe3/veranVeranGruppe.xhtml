@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition>
+
+	<h:form>
+
+		<h:dataTable var="v" value="#{veranDetailB.gruppen}">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Titel" />
+				</f:facet>
+				<h:outputText value="#{v.veranstaltung.modul.bezeichnung}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Gruppe" />
+				</f:facet>
+				<h:outputText value="#{v.veranstaltungGruppePk.gid}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="WochenTag" />
+				</f:facet>
+				<h:outputText value="#{v.wochentag}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Uhrzeit" />
+				</f:facet>
+				<h:outputText value="#{v.uhrzeit}" converter="zeitKonverter" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Dauer" />
+				</f:facet>
+				<h:outputText value="#{v.veranstaltung.dauer}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Typ" />
+				</f:facet>
+				<h:outputText
+					value="#{v.veranstaltung.veranstaltungsTyp.bezeichnung}" />
+			</h:column>
+			<h:column>
+
+				<h:commandButton actionListener="#{gruppeDetailB.select}"
+					action="gruppeDetail" value="Bearbeiten">
+					<f:attribute name="gruppe" value="#{v}" />
+				</h:commandButton>
+			</h:column>
+
+
+
+		</h:dataTable>
+	</h:form>
+</ui:composition>
+
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition>
+
+	<h:form>
+
+		<h:commandButton action="#{studentDetailB.saveBelegung}"
+			value="SaveBelegung" />
+		<h:dataTable value="#{studentDetailB.gruppenSelect}" var="gruppe">
+			<h:column>
+				<h:outputText value="#{gruppe.v.veranstaltungId}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{gruppe.v.modul.bezeichnung}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{gruppe.v.veranstaltungsTyp.bezeichnung}" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{gruppe.v.modul.studiengang}" />
+			</h:column>
+			<h:column>
+				<h:selectManyCheckbox value="#{gruppe.gruppen}"
+					converter="veranstaltungsGruppeConverter" styleClass="smallSelect">
+					<f:selectItems value="#{gruppe.rek}" />
+				</h:selectManyCheckbox>
+			</h:column>
+		</h:dataTable>
+
+	</h:form>
+
+</ui:composition>
+
+</html>

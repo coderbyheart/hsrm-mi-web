@@ -1,0 +1,12 @@
+ALTER TABLE liste ADD version int DEFAULT 1 NOT NULL;
+ALTER TABLE modul ADD version int DEFAULT 1 NOT NULL;
+ALTER TABLE modul_studiengang  ADD version int DEFAULT 1 NOT NULL;
+ALTER TABLE orte ADD version int DEFAULT 1 NOT NULL;
+ALTER TABLE studiengang ADD version int DEFAULT 1 NOT NULL;
+ALTER TABLE studierende ADD version int DEFAULT 1 NOT NULL;
+ALTER TABLE studierende_veranstaltung_gruppe   ADD version int DEFAULT 1 NOT NULL;
+ALTER TABLE veranstaltung ADD version int DEFAULT 1 NOT NULL;
+ALTER TABLE veranstaltung_gruppe ADD version int DEFAULT 1 NOT NULL;
+ALTER TABLE veranstaltungstyp ADD version int DEFAULT 1 NOT NULL;
+CREATE SEQUENCE veranstaltungstyp_id_seq START 1;
+SELECT setval('veranstaltungstyp_id_seq', max(id)) FROM veranstaltungstyp;

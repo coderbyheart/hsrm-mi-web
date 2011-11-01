@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition template="include/template.xhtml">
+		<ui:define name="title">Detailansicht eines Studenten</ui:define>
+		<ui:define name="maincol">
+
+			<h:messages styleClass="error" />
+			<h:panelGrid columns="2" rowClasses="alignTop">
+				<h:form>
+					<h:panelGrid columns="2">
+
+						<h:outputText value="matnr" />
+						<h:outputText value="#{studentDetailB.student.matnr}" />
+						<h:outputText value="vorname" />
+						<h:inputText value="#{studentDetailB.student.vorname}" />
+						<h:outputText value="nachname" />
+						<h:inputText value="#{studentDetailB.student.nachname}" />
+						<h:outputText value="fachsem" />
+						<h:inputText value="#{studentDetailB.student.fachsem}" />
+						<h:outputText value="studiengang" />
+						<h:selectOneMenu value="#{studentDetailB.student.studiengang}"
+							converter="studiengangConverter">
+							<f:selectItems value="#{selectListen.studiengangSelectList}" />
+						</h:selectOneMenu>
+						<h:outputText value="adresse1" />
+						<h:inputText value="#{studentDetailB.student.adresse1}" />
+						<h:outputText value="adresse2" />
+						<h:inputText value="#{studentDetailB.student.adresse2}" />
+						<h:outputText value="plz" />
+						<h:inputText value="#{studentDetailB.student.plz}" />
+						<h:outputText value="stadt" />
+						<h:inputText value="#{studentDetailB.student.stadt}" />
+						<h:outputText value="land" />
+						<h:inputText value="#{studentDetailB.student.land}" />
+						<h:outputText value="email" />
+						<h:inputText value="#{studentDetailB.student.email}" />
+						<h:outputText value="tel" />
+						<h:inputText value="#{studentDetailB.student.tel}" />
+						<h:commandButton action="studlist" value="Abbruch" />
+						<h:commandButton action="#{studentDetailB.save}" value="Save" />
+
+					</h:panelGrid>
+				</h:form>
+
+				<ui:include src="includeAufgabe3/studentBelegung.xhtml" />
+
+			</h:panelGrid>
+
+			<ui:include src="includeAufgabe3/studentBelegungChange.xhtml" />
+
+
+		</ui:define>
+		<ui:define name="rightcol">
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

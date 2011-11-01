@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition template="include/template.xhtml">
+		<ui:define name="title">neuen Studenten anlegen</ui:define>
+		<ui:define name="maincol">
+			<h:messages />
+
+			<h:form>
+				<h:panelGrid columns="2">
+
+					<h:outputText value="matnr" />
+					<h:outputText value="#{studAddB.student.matnr}" />
+					<h:outputText value="vorname" />
+					<h:inputText value="#{studAddB.student.vorname}" />
+					<h:outputText value="nachname" />
+					<h:inputText value="#{studAddB.student.nachname}" />
+					<h:outputText value="fachsem" />
+					<h:inputText value="#{studAddB.student.fachsem}" />
+					<h:outputText value="studiengang" />
+					<h:selectOneMenu value="#{studAddB.student.studiengang}"
+						converter="studiengangConverter">
+						<f:selectItems value="#{selectListen.studiengangSelectList}" />
+					</h:selectOneMenu>
+					<h:outputText value="adresse1" />
+					<h:inputText value="#{studAddB.student.adresse1}" />
+					<h:outputText value="adresse2" />
+					<h:inputText value="#{studAddB.student.adresse2}" />
+					<h:outputText value="plz" />
+					<h:inputText value="#{studAddB.student.plz}" />
+					<h:outputText value="stadt" />
+					<h:inputText value="#{studAddB.student.stadt}" />
+					<h:outputText value="land" />
+					<h:inputText value="#{studAddB.student.land}" />
+					<h:outputText value="email" />
+					<h:inputText value="#{studAddB.student.email}" />
+					<h:outputText value="tel" />
+					<h:inputText value="#{studAddB.student.tel}" />
+					<h:commandButton action="studlist" value="Abbruch" />
+					<h:commandButton action="#{studAddB.addAction}" value="Save" />
+
+				</h:panelGrid>
+			</h:form>
+
+
+
+
+
+
+		</ui:define>
+		<ui:define name="rightcol">
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

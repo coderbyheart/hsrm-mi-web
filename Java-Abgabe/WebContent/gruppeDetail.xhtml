@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition template="include/template.xhtml">
+		<ui:define name="title">Detailansicht eine Veranstaltungsgruppe</ui:define>
+		<ui:define name="maincol">
+			<h:messages styleClass=".error" />
+			<h:panelGrid columns="2" rowClasses="alignTop">
+
+				<h:form>
+
+					<h:panelGrid columns="2">
+						<h:outputText value="Titel" />
+						<h:inputText
+							value="#{gruppeDetailB.gruppe.veranstaltung.modul.bezeichnung}" />
+						<h:outputText value="Gruppe" />
+						<h:inputText
+							value="#{gruppeDetailB.gruppe.veranstaltungGruppePk.gid}" />
+						<h:outputText value="WochenTag" />
+						<h:selectOneMenu value="#{gruppeDetailB.gruppe.wochentag}">
+							<f:selectItems value="#{selectListen.wochenTagSelectList}" />
+						</h:selectOneMenu>
+						<h:outputText value="Uhrzeit" />
+						<h:inputText value="#{gruppeDetailB.gruppe.uhrzeit}"
+							converter="zeitKonverter" />
+						<h:outputText value="Dauer" />
+						<h:inputText value="#{gruppeDetailB.gruppe.veranstaltung.dauer}" />
+						<h:outputText value="Typ" />
+						<h:inputText
+							value="#{gruppeDetailB.gruppe.veranstaltung.veranstaltungsTyp.bezeichnung}" />
+						<h:commandButton action="veranDetail" value="Abbruch" />
+						<h:commandButton action="#{gruppeDetailB.save}" value="Save" />
+					</h:panelGrid>
+				</h:form>
+				<ui:include src="includeAufgabe3/gruppeStudentList.xhtml" />
+			</h:panelGrid>
+		</ui:define>
+		<ui:define name="rightcol">
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

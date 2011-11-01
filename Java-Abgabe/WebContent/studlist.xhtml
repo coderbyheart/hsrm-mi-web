@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition template="include/template.xhtml">
+		<ui:define name="title">Liste der Studenten</ui:define>
+		<ui:define name="maincol">
+			<h:form>
+				<h:dataTable var="s" value="#{studlist.list}"
+					binding="#{studlist.dataTable}" class="searchTable">
+					<h:column>
+						<f:facet name="header">
+							#
+						</f:facet>
+						<h:outputText
+							value="${(studlist.page - 1) * studlist.rowsPerPage + (studlist.dataTable.rowIndex + 1)}." />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:commandLink actionListener="#{studlist.setSortByAction}">
+								<f:attribute name="field" value="matnr" />
+								<h:outputText value="MatNr." />
+							</h:commandLink>
+							<h:graphicImage library="icons" name="bullet_arrow_down.png"
+								rendered="${studlist.sortBy eq 'matnr' and studlist.sortDir eq 'ASC'}" />
+							<h:graphicImage library="icons" name="bullet_arrow_up.png"
+								rendered="${studlist.sortBy eq 'matnr' and studlist.sortDir eq 'DESC'}" />
+						</f:facet>
+						<h:outputText value="#{s.matnr}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:commandLink actionListener="#{studlist.setSortByAction}">
+								<f:attribute name="field" value="vorname" />
+								<h:outputText value="Vorname" />
+							</h:commandLink>
+							<h:graphicImage library="icons" name="bullet_arrow_down.png"
+								rendered="${studlist.sortBy eq 'vorname' and studlist.sortDir eq 'ASC'}" />
+							<h:graphicImage library="icons" name="bullet_arrow_up.png"
+								rendered="${studlist.sortBy eq 'vorname' and studlist.sortDir eq 'DESC'}" />
+						</f:facet>
+						<h:outputText value="#{s.vorname}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:commandLink actionListener="#{studlist.setSortByAction}">
+								<f:attribute name="field" value="nachname" />
+								<h:outputText value="Nachname" />
+							</h:commandLink>
+							<h:graphicImage library="icons" name="bullet_arrow_down.png"
+								rendered="${studlist.sortBy eq 'nachname' and studlist.sortDir eq 'ASC'}" />
+							<h:graphicImage library="icons" name="bullet_arrow_up.png"
+								rendered="${studlist.sortBy eq 'nachname' and studlist.sortDir eq 'DESC'}" />
+						</f:facet>
+						<h:outputText value="#{s.nachname}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:commandLink actionListener="#{studlist.setSortByAction}">
+								<f:attribute name="field" value="fachsem" />
+								<h:outputText value="Fachsemester" />
+							</h:commandLink>
+							<h:graphicImage library="icons" name="bullet_arrow_down.png"
+								rendered="${studlist.sortBy eq 'fachsem' and studlist.sortDir eq 'ASC'}" />
+							<h:graphicImage library="icons" name="bullet_arrow_up.png"
+								rendered="${studlist.sortBy eq 'fachsem' and studlist.sortDir eq 'DESC'}" />
+						</f:facet>
+						<h:outputText value="#{s.fachsem}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:commandLink actionListener="#{studlist.setSortByAction}">
+								<f:attribute name="field" value="studiengang" />
+								<h:outputText value="Studiengang" />
+							</h:commandLink>
+							<h:graphicImage library="icons" name="bullet_arrow_down.png"
+								rendered="${studlist.sortBy eq 'studiengang' and studlist.sortDir eq 'ASC'}" />
+							<h:graphicImage library="icons" name="bullet_arrow_up.png"
+								rendered="${studlist.sortBy eq 'studiengang' and studlist.sortDir eq 'DESC'}" />
+						</f:facet>
+						<h:outputText value="#{s.studiengang.bezeichnung}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:commandLink actionListener="#{studlist.setSortByAction}">
+								<f:attribute name="field" value="adresse1" />
+								<h:outputText value="Adresse 1" />
+							</h:commandLink>
+							<h:graphicImage library="icons" name="bullet_arrow_down.png"
+								rendered="${studlist.sortBy eq 'adresse1' and studlist.sortDir eq 'ASC'}" />
+							<h:graphicImage library="icons" name="bullet_arrow_up.png"
+								rendered="${studlist.sortBy eq 'adresse1' and studlist.sortDir eq 'DESC'}" />
+						</f:facet>
+						<h:outputText value="#{s.adresse1}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+
+							<h:commandLink actionListener="#{studlist.setSortByAction}">
+								<f:attribute name="field" value="adresse2" />
+								<h:outputText value="Adresse 2" />
+							</h:commandLink>
+							<h:graphicImage library="icons" name="bullet_arrow_down.png"
+								rendered="${studlist.sortBy eq 'adresse2' and studlist.sortDir eq 'ASC'}" />
+							<h:graphicImage library="icons" name="bullet_arrow_up.png"
+								rendered="${studlist.sortBy eq 'adresse2' and studlist.sortDir eq 'DESC'}" />
+						</f:facet>
+						<h:outputText value="#{s.adresse2}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:commandLink actionListener="#{studlist.setSortByAction}">
+								<f:attribute name="field" value="plz" />
+								<h:outputText value="PLZ" />
+							</h:commandLink>
+							<h:graphicImage library="icons" name="bullet_arrow_down.png"
+								rendered="${studlist.sortBy eq 'plz' and studlist.sortDir eq 'ASC'}" />
+							<h:graphicImage library="icons" name="bullet_arrow_up.png"
+								rendered="${studlist.sortBy eq 'plz' and studlist.sortDir eq 'DESC'}" />
+						</f:facet>
+						<h:outputText value="#{s.plz}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:commandLink actionListener="#{studlist.setSortByAction}">
+								<f:attribute name="field" value="stadt" />
+								<h:outputText value="Stadt" />
+							</h:commandLink>
+							<h:graphicImage library="icons" name="bullet_arrow_down.png"
+								rendered="${studlist.sortBy eq 'stadt' and studlist.sortDir eq 'ASC'}" />
+							<h:graphicImage library="icons" name="bullet_arrow_up.png"
+								rendered="${studlist.sortBy eq 'stadt' and studlist.sortDir eq 'DESC'}" />
+						</f:facet>
+						<h:outputText value="#{s.stadt}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:commandLink actionListener="#{studlist.setSortByAction}">
+								<f:attribute name="field" value="land" />
+								<h:outputText value="Land" />
+							</h:commandLink>
+							<h:graphicImage library="icons" name="bullet_arrow_down.png"
+								rendered="${studlist.sortBy eq 'land' and studlist.sortDir eq 'ASC'}" />
+							<h:graphicImage library="icons" name="bullet_arrow_up.png"
+								rendered="${studlist.sortBy eq 'land' and studlist.sortDir eq 'DESC'}" />
+						</f:facet>
+						<h:outputText value="#{s.land}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:commandLink actionListener="#{studlist.setSortByAction}">
+								<f:attribute name="field" value="email" />
+								<h:outputText value="E-Mail" />
+							</h:commandLink>
+							<h:graphicImage library="icons" name="bullet_arrow_down.png"
+								rendered="${studlist.sortBy eq 'email' and studlist.sortDir eq 'ASC'}" />
+							<h:graphicImage library="icons" name="bullet_arrow_up.png"
+								rendered="${studlist.sortBy eq 'email' and studlist.sortDir eq 'DESC'}" />
+						</f:facet>
+						<h:outputText value="#{s.email}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:commandLink actionListener="#{studlist.setSortByAction}">
+								<f:attribute name="field" value="tel" />
+								<h:outputText value="Telefon" />
+								<h:graphicImage library="icons" name="bullet_arrow_down.png"
+									rendered="${studlist.sortBy eq 'tel' and studlist.sortDir eq 'ASC'}" />
+								<h:graphicImage library="icons" name="bullet_arrow_up.png"
+									rendered="${studlist.sortBy eq 'tel' and studlist.sortDir eq 'DESC'}" />
+							</h:commandLink>
+						</f:facet>
+						<h:outputText value="#{s.tel}" />
+					</h:column>
+					<h:column>
+						<h:commandButton actionListener="#{studentDetailB.select}" action="studentDetail" value="Bearbeiten">
+							<f:attribute name="stud_matnr" value="#{s.matnr}" />
+						</h:commandButton>
+					</h:column>
+
+					<f:facet name="footer">
+						<ui:include src="include/pager.xhtml">
+							<ui:param name="list" value="#{studlist}" />
+						</ui:include>
+					</f:facet>
+				</h:dataTable>
+			</h:form>
+		</ui:define>
+		<ui:define name="rightcol">
+			<h2>Studenten filtern</h2>
+			<h:form>
+				<p>
+					<h:outputLabel for="studiengangfilter" value="Studiengang: " /><br />
+					<h:selectOneMenu id="studiengangfilter"
+						value="#{studlist.studiengangFilter}">
+						<f:selectItems value="#{studiengang.studiengangList}" />
+					</h:selectOneMenu>
+				</p>
+				<p>
+					<h:outputLabel for="fachsemfilter" value="Fachsemester:" /><br />
+					<h:selectOneMenu id="fachsemfilter"
+						value="#{studlist.fachSemesterFilter}">
+						<f:selectItems value="#{studlist.fachSemesterList}" />
+					</h:selectOneMenu>
+				</p>
+				<p>
+					<h:outputLabel for="searchType" value="Suche in:" /><br />
+					<h:selectOneMenu id="searchType"
+						value="#{studlist.searchType}">
+						<f:selectItems value="#{studlist.searchTypeList}" />
+					</h:selectOneMenu>
+					<h:inputText value="#{studlist.search}" id="searchTerm" />
+				</p>
+				<h:commandButton value="Filtern" />
+			</h:form>
+			<h:panelGroup rendered="${studlist.searchType eq 'all' and studlist.search ne ''}">
+				<script type="text/javascript">
+					new SearchHighlighter("<h:outputText value="#{studlist.search}" />");
+				</script>
+			</h:panelGroup>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

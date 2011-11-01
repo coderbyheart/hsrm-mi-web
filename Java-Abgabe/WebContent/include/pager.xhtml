@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition>
+		<div id="footerleft"><h:commandLink
+			action="#{list.gotoFirstPage}" rendered="${list.page gt 1}"
+			title="Zur ersten Seite">
+			<h:graphicImage library="icons" name="resultset_first.png"
+				alt="Zur ersten Seite" />
+		</h:commandLink> <h:commandLink action="#{list.gotoPrevPage}"
+			rendered="${list.page gt 1}" title="Eine Seite zurück">
+			<h:graphicImage library="icons" name="resultset_previous.png"
+				alt="Eine Seite zurück" />
+		</h:commandLink> &nbsp;</div>
+		<div id="footercenter"><h:outputText value="#{list.numRows}" />
+		Einträge<br />
+		Seite <h:outputText value="#{list.page}" /> von <h:outputText
+			value="#{list.numPages}" /></div>
+		<div id="footerright">&nbsp; <h:commandLink
+			action="#{list.gotoNextPage}"
+			rendered="${list.page lt list.numPages}" title="Eine Seite vor">
+			<h:graphicImage library="icons" name="resultset_next.png"
+				alt="Eine Seite vor" />
+		</h:commandLink> <h:commandLink action="#{list.gotoLastPage}"
+			rendered="${list.page lt list.numPages}" title="Zur letzten Seite">
+			<h:graphicImage library="icons" name="resultset_last.png"
+				alt="Zur letzten Seite" />
+		</h:commandLink></div>
+	</ui:composition>
+</h:body>
+</html>

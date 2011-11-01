@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition template="include/template.xhtml">
+		<ui:define name="title">Veranstaltung hinzufügen</ui:define>
+		<ui:define name="maincol">
+			<h:messages />
+			<h:form>
+				<h:panelGrid columns="2">
+					<h:panelGroup>
+						<h:outputLabel value="Studiengang: " for="studiengang" />
+					</h:panelGroup>
+					<h:panelGroup>
+						<f:ajax render="modulPanel">
+							<h:selectOneMenu id="studiengang"
+								value="#{veranadd.studiengangId}">
+								<f:selectItems value="#{veranadd.studiengangList}" />
+							</h:selectOneMenu>
+						</f:ajax>
+					</h:panelGroup>
+					<h:panelGroup>
+						<h:outputLabel value="Modul: " for="modul" />
+					</h:panelGroup>
+					<h:panelGroup id="modulPanel">
+						<h:message for="modul" errorClass="error block" />
+						<h:selectOneMenu id="modul" value="#{veranadd.modulId}"
+							disabled="${veranadd.studiengangId lt 1}" required="true">
+							<f:selectItems value="#{veranadd.modulList}" />
+							<f:validateLongRange minimum="1" />
+						</h:selectOneMenu>
+					</h:panelGroup>
+					<h:panelGroup>
+						<h:outputLabel value="Veranstaltungsstyp: " for="verantyp" />
+					</h:panelGroup>
+					<h:panelGroup>
+						<h:message for="verantyp" errorClass="error block" />
+						<h:selectOneMenu id="verantyp"
+							value="#{veranadd.veranstaltungsTypId}" required="true">
+							<f:selectItems value="#{veranadd.veranstaltungsTypList}" />
+						</h:selectOneMenu>
+					</h:panelGroup>
+					<h:panelGroup>
+						<h:outputLabel value="Dauer: " for="dauer" />
+					</h:panelGroup>
+					<h:panelGroup>
+						<h:message for="dauer" errorClass="error block" />
+						<h:inputText value="#{veranadd.dauer}" id="dauer" required="true">
+							<f:validateLongRange minimum="45" maximum="360" />
+						</h:inputText>
+					</h:panelGroup>
+					<h:panelGroup>
+						<h:outputLabel value="Maximal Teilnehmeranzahl: " for="max" />
+					</h:panelGroup>
+					<h:panelGroup>
+						<h:message for="max" errorClass="error block" />
+						<h:inputText value="#{veranadd.maxTeilnehmer}" id="max"
+							required="true">
+							<f:validateLongRange minimum="5" maximum="30" />
+						</h:inputText>
+					</h:panelGroup>
+					<h:panelGroup>
+					</h:panelGroup>
+					<h:panelGroup>
+						<h:commandButton action="#{veranadd.addAction}" value="hinzufügen" />
+					</h:panelGroup>
+				</h:panelGrid>
+			</h:form>
+		</ui:define>
+		<ui:define name="rightcol">&nbsp;</ui:define>
+	</ui:composition>
+	
+</h:body>
+</html>

@@ -1,0 +1,11 @@
+Lege Dir eine Datenbank an.
+
+Befülle die Datenbank mit den Scripten:
+	src/de/medieninf/webanw/belegung/belegung-1.1.sql
+	src/de/medieninf/webanw/belegung/belegung_jpa_changes.sql
+
+Kopiere
+	src/META-INF/persistence.xml.dist
+nach
+	src/META-INF/persistence.xml
+und passe sie anschließend mit deinen Datenbankzugangsdaten an.	

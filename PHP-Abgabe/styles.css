@@ -1,0 +1,10 @@
+body { margin: 2em; }
+.center { text-align: center; }
+.pager a { margin: 0.5em; }
+fieldset { border: 1px solid #000; padding: 1em; width: 40em; }
+form.studsearch label { width: 100%; }
+form.studsearch input, form.studsearch select  { float: right; width: 25em; }
+form.studsearch button { float: right; }
+.clear { clear: both; }
+
+.err { color: red; }

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition>
+	<h:form>
+		<h:dataTable var="s" value="#{gruppeDetailB.gruppe.studierende}">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="matnr" />
+				</f:facet>
+				<h:outputText value="#{s.matnr}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Vorname" />
+				</f:facet>
+				<h:outputText value="#{s.vorname}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Nachname" />
+				</f:facet>
+				<h:outputText value="#{s.nachname}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="studiengang" />
+				</f:facet>
+				<h:outputText value="#{s.studiengang}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="fachsem" />
+				</f:facet>
+				<h:outputText value="#{s.fachsem}" />
+			</h:column>
+
+			<h:column>
+				<h:commandButton actionListener="#{studentDetailB.select}"
+					action="studentDetail" value="Bearbeiten">
+					<f:attribute name="stud_matnr" value="#{s.matnr}" />
+				</h:commandButton>
+			</h:column>
+
+
+
+		</h:dataTable>
+	</h:form>
+</ui:composition>
+
+</html>

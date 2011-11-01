@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Author: m -->
+<!-- Version: $Id$ -->
+<project name="Web-Anwendungen Abgabe 2" default="compile">
+
+	<property name="basedir" value="." />
+	<property name="srcdir" value="${basedir}/src" />
+	<property name="webdir" value="${basedir}/WebContent" />
+	<property name="libdir" value="${webdir}/WEB-INF/lib" />
+	<property name="bindir" value="${webdir}/WEB-INF/classes" />
+	<property name="reportdir" value="${basedir}/reports" />
+	<property name="docdir" value="${basedir}/docs" />
+	<property name="javadocdir" value="${basedir}/docs/javadoc" />
+
+	<!-- clean task, by m -->
+	<target name="clean">
+		<delete dir="${bindir}" />
+		<delete dir="${reportdir}" />
+	</target>
+
+	<path id="libcp">
+		<pathelement path="${libdir}/eclipselink.jar" />
+		<pathelement path="${libdir}/javax.persistence_2.0.3.v201010191057.jar" />
+		<pathelement path="${libdir}/jsf-api.jar" />
+		<pathelement path="${libdir}/jsf-impl.jar" />
+		<pathelement path="${libdir}/jstl-1.2.jar" />
+		<pathelement path="${libdir}/junit-4.8.2.jar" />
+		<pathelement path="${libdir}/postgresql-8.4-702.jdbc4.jar" />
+		<pathelement path="${libdir}/servlet-api.jar" />
+		<pathelement path="${libdir}/el-api.jar" />
+	</path>
+
+	<!-- compile task, by m -->
+	<target name="compile" depends="clean" description="Java-Sourcen compilieren">
+		<mkdir dir="${bindir}" />
+		<javac srcdir="${srcdir}" destdir="${bindir}" debug="on" classpathref="libcp" includeantruntime="false" />
+		<copy tofile="${bindir}/META-INF/persistence.xml" file="${srcdir}/META-INF/persistence.xml" />
+	</target>
+
+	<!-- test task by m -->
+	<target name="test" depends="compile" description="JUnit-Tests auführen">
+		<mkdir dir="${reportdir}/junit" />
+		<junit fork="yes" printsummary="on" haltonfailure="no">
+			<classpath location="${bindir}" />
+			<classpath refid="libcp" />
+			<formatter type="xml" />
+			<batchtest todir="${reportdir}/junit">
+				<fileset dir="${srcdir}" includes="**/TestBelegung.java" />
+			</batchtest>
+		</junit>
+	</target>
+
+	<!-- JavaDoc task, by m -->
+	<target name="javadoc" description="Erzeugt JavaDoc für das Projekt">
+		<delete dir="${javadocdir}" />
+		<mkdir dir="${javadocdir}" />
+		<javadoc encoding="utf-8" charset="utf-8" docencoding="utf-8" access="protected" author="true" classpathref="libcp" destdir="${javadocdir}" doctitle="What The Foto?" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" source="1.6" splitindex="true" use="true" version="true">
+			<fileset dir="${srcdir}/" includes="**/*.java" />
+		</javadoc>
+	</target>
+
+</project>

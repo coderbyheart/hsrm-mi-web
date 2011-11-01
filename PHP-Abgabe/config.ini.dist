@@ -1,0 +1,10 @@
+# Beispiel-Konfiguration
+# Nach config.ini kopieren und anpassen
+
+dbhost = localhost
+dbuser = postgres
+dbpassword =
+database = webanw05
+debug = 1
+
+# EOF: $Id: config.ini.dist 17 2011-04-17 11:46:11Z mtack001 $

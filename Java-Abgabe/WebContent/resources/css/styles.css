@@ -1,0 +1,23 @@
+body {
+	margin: 2em;
+}
+
+.error {
+	color: #f00;
+}
+
+.alignTop {vertical-align: top;}
+.smallSelect{padding: 0; margin: 0;}
+
+.block { display: block; }
+
+#main { width: 100%; }
+#rightcol { width: 20%; }
+#maincol { width: 78%; margin-right: 2%; }
+#maincol, #rightcol { float: left; }
+
+#footerleft, #footercenter, #footerright { float: left; width: 33%; }
+#footerleft { text-align: right; }
+#footercenter { text-align: center; }
+
+.match { background-color: #EAC461; }

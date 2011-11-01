@@ -1,0 +1,13 @@
+Installationsanleitung
+
+1. Datenbank aufsetzen
+
+    psql --user {dbuser} -d {database} < psql/create_db.sql
+    psql --user {dbuser} -d {database} < psql/fill_db.sql
+
+2. Anwendung konfigurieren
+
+    config.ini.dist nach config.ini kopieren
+    DB-Zugangsdaten eintragen
+
+EOF: $Id$

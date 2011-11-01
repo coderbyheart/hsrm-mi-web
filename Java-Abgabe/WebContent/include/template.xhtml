@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="css" name="reset-min.css" />
+	<h:outputStylesheet library="css" name="base-min.css" />
+	<h:outputStylesheet library="css" name="fonts-min.css" />
+	<h:outputStylesheet library="css" name="styles.css" />
+	<title>
+		<ui:insert name="title">title: ??</ui:insert>
+	</title>
+</h:head>
+<h:body>
+	<ul id="menu">
+		<li><h:link value="Studenten" outcome="studlist" /></li>
+		<li>
+			<h:link value="Veranstaltungen" outcome="veranlist" />
+			<ul>
+				<li><h:link value="Veranstaltung hinzufügen" outcome="veranadd" /></li>
+				<li><h:link value="Studenten hinzufügen" outcome="studentadd" /></li>
+			</ul>
+		</li>
+	</ul>
+	<h1>
+		<ui:insert name="title">title: ??</ui:insert>
+	</h1>
+	<div id="main">
+		<div id="maincol">
+			<ui:insert name="maincol">maincol: ??</ui:insert>	
+		</div>
+		<div id="rightcol">
+			<ui:insert name="rightcol">rightcol: ??</ui:insert>	
+		</div>
+	</div>
+	<h:outputScript library="js" name="mootools.js" target="body"/>
+	<h:outputScript library="js" name="search.js" target="body"/>
+</h:body>
+</html>
