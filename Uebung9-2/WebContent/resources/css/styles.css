@@ -1,0 +1,12 @@
+body {
+	margin: 2em;
+}
+
+.error {
+	color: #f00;
+}
+
+#main { width: 100%; }
+#leftcol, #rightcol { width: 20%; }
+#centercol { width: 60%; }
+#main, #leftcol, #rightcol, #centercol { float: left; }

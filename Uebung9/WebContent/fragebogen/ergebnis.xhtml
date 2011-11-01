@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Fragebogen</title>
+	<link rel="stylesheet" type="text/css"
+		href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css" />
+	<link rel="stylesheet" type="text/css"
+		href="http://yui.yahooapis.com/3.3.0/build/cssbase/base-min.css" />
+	<link rel="stylesheet" type="text/css"
+		href="http://yui.yahooapis.com/3.3.0/build/cssfonts/fonts-min.css" />
+	<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+</h:head>
+<h:body>
+	<h1>Fragebogen - Auswertung</h1>
+	<p>
+		Hallo
+		<h:outputText value="#{namebean.vorname}" />
+	</p>
+	<h:dataTable var="aw" value="#{fragebogen.result}">
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Frage" />
+			</f:facet>
+			<h:outputText value="#{aw.frage}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Antwort" />
+			</f:facet>
+			<h:outputText value="#{aw.antwort}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Punkte" />
+			</f:facet>
+			<h:outputText value="#{aw.punkte}" />
+		</h:column>
+	</h:dataTable>
+	<p>
+		Du hast 
+		<strong><h:outputText value="#{fragebogen.sum}" /> von <h:outputText value="#{fragebogen.maxPoints}" /></strong>
+		möglichen Punkten erreicht.
+	</p>
+
+	<h:form>
+		<h:commandLink action="#{fragebogen.reset}">nochmal</h:commandLink>
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fragebogen [
+	<!ELEMENT fragenbogen (frage+)>
+	<!ELEMENT frage (antwort+)>
+	<!ELEMENT antwort (#PCDATA)>
+	<!ATTLIST frage text CDATA #REQUIRED>
+	<!ATTLIST antwort wert ( 0 | 1 | 2 | 3 | 4 | 5 | 10) #REQUIRED>
+]>
+<fragebogen>
+<frage text="Was ist Ihre Lieblingsfarbe?">
+<antwort wert="5"> weiß </antwort>
+<antwort wert="4"> blau </antwort>
+<antwort wert="3"> gelb </antwort>
+<antwort wert="2"> rot </antwort>
+<antwort wert="0"> schwarz </antwort>
+</frage>
+<frage text="Wann stehen Sie am liebsten auf?">
+<antwort wert="4"> 8 Uhr </antwort>
+<antwort wert="3"> 9:Uhr </antwort>
+<antwort wert="2"> 10Uhr </antwort>
+<antwort wert="0"> gar nicht </antwort>
+</frage>
+<frage text="Was ist Ihre Lieblingsautomarke?">
+<antwort wert="5"> Audi </antwort>
+<antwort wert="5"> BMW </antwort>
+<antwort wert="5"> Mercedes </antwort>
+<antwort wert="0"> Ich fahr Fahrrad </antwort>
+</frage>
+<frage text="Was ist Ihre Liebingsprogrammiersprache?">
+<antwort wert="4"> Java </antwort>
+<antwort wert="3"> C </antwort>
+<antwort wert="5"> Python </antwort>
+<antwort wert="2"> PHP </antwort>
+<antwort wert="1"> Perl </antwort>
+</frage>
+<frage text="Was ist 9*6?">
+<antwort wert="1"> 54 </antwort>
+<antwort wert="3"> mehr als 10 </antwort>
+<antwort wert="10"> 42 </antwort>
+<antwort wert="5"> ein Produkt </antwort>
+</frage>
+<frage text="Wofür steht WWW?">
+<antwort wert="1"> Internet </antwort>
+<antwort wert="2"> World Wide Web </antwort>
+<antwort wert="3"> Wieso, Weshalb, Warum </antwort>
+<antwort wert="5"> Weck, Worscht und Woi </antwort>
+</frage>
+</fragebogen>

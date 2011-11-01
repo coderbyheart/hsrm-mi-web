@@ -1,0 +1,20 @@
+<persistence
+	xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	version="1.0">
+
+    <persistence-unit name="blog">
+      <class>de.medieninf.webanw.ueb9.BlogEntry</class>    	
+      <class>de.medieninf.webanw.ueb9.BlogComment</class>    	
+      <class>de.medieninf.webanw.ueb9.BlogImage</class>    	
+      <properties>
+        <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+        <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://db.intern.mi.hs-rm.de:5432/mtack001_blog"/>
+        <property name="javax.persistence.jdbc.user" value="mtack001"/>
+        <property name="javax.persistence.jdbc.password" value="1234"/>
+        <property name="javax.persistence.logging.level" value="INFO"/>
+      </properties>
+    </persistence-unit>
+    
+</persistence>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition template="include/template.xhtml">
+		<ui:define name="title">Blog-Detail</ui:define>
+		<ui:define name="leftcol">
+			<h2>Kommentare nach Tag</h2>
+			<ul>
+				<ui:repeat var="d" value="#{currentBlogComments.commentsPerDay}">
+					<li><h:link outcome="blogdetail">
+							<f:param name="id" value="#{currentBlog.blogEntry.blogId}" />
+							<f:param name="commentsOnDay" value="#{d.dayLink}" />
+							<h:outputText value="#{d.day}">
+								<f:convertDateTime dateStyle="short" type="date" />
+							</h:outputText>
+						</h:link> (<h:outputText value="#{d.numComments}" />)</li>
+				</ui:repeat>
+				<h:panelGroup rendered="#{currentBlogComments.commentsFiltered}">
+					<li><h:link outcome="blogdetail"
+							value="Alle Kommentare anzeigen">
+							<f:param name="id" value="#{currentBlog.blogEntry.blogId}" />
+						</h:link>
+					</li>
+				</h:panelGroup>
+			</ul>
+			<hr />
+			<p>
+				<h:link value="zurück zur Liste der Blogs" outcome="bloglist" />
+			</p>
+		</ui:define>
+		<ui:define name="centercol">
+			<h2>
+				<h:outputText value="#{currentBlog.blogEntry.title}" />
+			</h2>
+			<p class="date">
+				<h:outputText value="#{currentBlog.blogEntry.date}">
+					<f:convertDateTime dateStyle="short" type="date" />
+				</h:outputText>
+			</p>
+			<div class="content">
+				<h:outputText value="#{currentBlog.blogEntry.image}" />
+				<h:outputText value="#{currentBlog.blogEntry.content}" />
+			</div>
+			<h3>Kommentar hinzufügen</h3>
+			<h:form>
+				<h:outputLabel for="comment" value="Dein Kommentar" /><br />
+				<h:inputTextarea id="comment" value="#{newblogcomment.comment}" /><br />
+				<h:commandButton value="Eintragen"
+					action="#{currentBlog.addComment}" />
+			</h:form>
+			<h3>Kommentare</h3>
+			<ui:repeat var="c" value="#{currentBlogComments.comments}">
+				<p>
+					<span class="date"> <h:outputText value="#{c.date}">
+							<f:convertDateTime dateStyle="short" type="date" />
+						</h:outputText> </span> <span class="content"> <h:outputText value="#{c.content}" />
+					</span>
+				</p>
+			</ui:repeat>
+		</ui:define>
+		<ui:define name="rightcol">
+			<h:form>
+				<h:outputLabel for="searchTerm" value="Suche" />
+				<h:inputText id="searchTerm" immediate="true"
+					value="#{bcs.searchTerm}" />
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

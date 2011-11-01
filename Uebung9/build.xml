@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Author: m -->
+<!-- Version: $Id: build.xml 1629 2011-06-04 23:00:52Z shess002 $ -->
+<project name="Web-Anwendungen Übung 9" default="compile">
+	<description>Der Server-Teil des Systems, geschrieben in Java.</description>
+
+	<property name="basedir" value="." />
+	<property name="srcdir" value="${basedir}/src" />
+	<property name="libdir" value="${basedir}/WebContent/WEB-INF/lib" />
+	<property name="bindir" value="${basedir}/WebContent/WEB-INF/classes" />
+
+	<!-- clean task, by m -->
+	<target name="clean">
+		<delete dir="${bindir}" />
+	</target>
+
+	<path id="libcp">
+		<pathelement path="${libdir}/jsf-api.jar" />
+		<pathelement path="${libdir}/jsf-impl.jar" />
+	</path>
+
+	<!-- compile task, by m -->
+	<target name="compile" depends="clean" description="Java-Sourcen compilieren">
+		<mkdir dir="${bindir}" />
+		<javac srcdir="${srcdir}" destdir="${bindir}" debug="on" classpathref="libcp" includeantruntime="false"/>
+	</target>
+
+</project>
+

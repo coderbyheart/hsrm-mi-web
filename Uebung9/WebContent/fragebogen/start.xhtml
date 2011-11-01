@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Fragebogen</title>
+	<link rel="stylesheet" type="text/css"
+		href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css" />
+	<link rel="stylesheet" type="text/css"
+		href="http://yui.yahooapis.com/3.3.0/build/cssbase/base-min.css" />
+	<link rel="stylesheet" type="text/css"
+		href="http://yui.yahooapis.com/3.3.0/build/cssfonts/fonts-min.css" />
+	<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+</h:head>
+<h:body>
+	<h1>Fragebogen</h1>
+	<p>
+		Halle
+		<h:outputText value="#{namebean.vorname}" />
+	</p>
+	<p>
+		Die Fragen werden aus
+		<h:outputText value="#{fragebogen.xmlFile}" />
+		ausgelesen.
+	</p>
+
+	<h2>
+		Frage
+		<h:outputText value="#{fragebogen.currentQuestionNo}" />
+		:
+		<h:outputText value="#{fragebogen.currentQuestion}" />
+	</h2>
+
+	<h:form>
+		<h:panelGrid columns="1">
+			<h:selectOneRadio layout="pageDirection"
+				value="#{fragebogen.currentAnswer}">
+				<f:selectItems value="#{fragebogen.currentAnswers}" />
+			</h:selectOneRadio>
+			<h:commandButton action="#{fragebogen.answer}" value="weiter" />
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>webanw-ueb6-1</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	<context-param>
+		<param-name>fragebogen</param-name>
+		<param-value>/WEB-INF/fragebogen.xml</param-value>
+	</context-param>
+	<servlet>
+		<servlet-name>WaehrungsUmrechner</servlet-name>
+		<servlet-class>servlets.WaehrungsUmrechnerController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>WaehrungsUmrechner</servlet-name>
+		<url-pattern>/WaehrungsUmrechner</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Blog</servlet-name>
+		<servlet-class>servlets.BlogController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Blog</servlet-name>
+		<url-pattern>/Blog/</url-pattern>
+	</servlet-mapping>
+	<listener>
+		<listener-class>org.h2.server.web.DbStarter</listener-class>
+	</listener>
+	<context-param>
+		<param-name>db.url</param-name>
+		<param-value>jdbc:h2:WEB-INF/blog/db.h2</param-value>
+	</context-param>
+	<context-param>
+		<param-name>db.user</param-name>
+		<param-value>sa</param-value>
+	</context-param>
+	<context-param>
+		<param-name>db.password</param-name>
+		<param-value>sa</param-value>
+	</context-param>
+	<filter>
+		<filter-name>GrayscaleLargeImages</filter-name>
+		<filter-class>filter.GrayscaleLargeImages</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>GrayscaleLargeImages</filter-name>
+		<url-pattern>/ImageListing</url-pattern>
+	</filter-mapping>
+	<context-param>
+		<param-name>cacheDir</param-name>
+		<param-value>/tmp</param-value>
+	</context-param>
+</web-app>

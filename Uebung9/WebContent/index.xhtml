@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Fragebogen</title>
+</h:head>
+<h:body>
+	<h3>Eingabe akzeptiert</h3>
+Hallo <h:outputText value="#{namebean.name}" />.<br />
+Status Ihrer Eingabe #{namebean.status}
+<h:panelGrid columns="2">
+		<h:outputText value="Vorname" />
+		<h:outputText value="#{namebean.vorname}" />
+		<h:outputText value="Mitteln" />
+		<h:outputText value="#{namebean.mittelname}" />
+		<h:outputText value="Nachname" />
+		<h:outputText value="#{namebean.nachname}" />
+		<h:outputText value="Alter" />
+		<h:outputText value="#{namebean.alter}" />
+	</h:panelGrid>
+</h:body>
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition template="include/template.xhtml">
+		<ui:define name="title">Blog-Liste</ui:define>
+		<ui:define name="leftcol">
+			<h2>Liste der Blogeinträge</h2>
+			<ul>
+				<ui:repeat var="b" value="#{blog.blogs}">
+					<li><h:link value="#{b.title}" outcome="blogdetail">
+							<f:param name="id" value="#{b.blogId}" />
+						</h:link>
+					</li>
+				</ui:repeat>
+			</ul>
+		</ui:define>
+		<ui:define name="centercol">
+			<h:form>
+				<h2>Neuen Blogeintrag schreiben</h2>
+				<p>
+					<h:outputLabel for="title" value="Titel" /><br />
+					<h:inputText id="title" value="#{newblogentry.title}" />
+				</p>
+				<p>
+					<h:outputLabel for="content" value="Inhalt" /><br />
+					<h:inputTextarea id="content" value="#{newblogentry.content}" />
+				</p>
+				<p>
+					<h:commandButton action="#{blog.addEntry}" value="Eintragen" />
+				</p>
+			</h:form>
+		</ui:define>
+		<ui:define name="rightcol">
+			<h:form>
+				<h:outputLabel for="searchTerm" value="Suche" />
+				<h:inputText id="searchTerm" immediate="true" value="#{blog.searchTerm}" />
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
