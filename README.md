@@ -1,8 +1,8 @@
-# Quellcode zum Kurs "Web-basierte Anwendungen"
+# Quellcode zum Kurs
 
 In diesem Repository findet sich der Quellcode, den ich, 
 zum Teil gemeinsam mit Mitstudenten, im Laufe des Kurses 
-erstell habe. Er erhebt keinen Anspruch auf Korrektheit 
+erstellt habe. Er erhebt keinen Anspruch auf Korrektheit 
 oder Vollständigkeit.
 
 ## Quellcode verwenden
@@ -12,7 +12,9 @@ deiner Ausbildung verwenden.
 
 Bitte denke aber daran, dass Du **zuerst selber** versuchst, 
 das jeweilige Problem zu lösen, bevor Du dir Quellcode 
-aus dem Internet zusammenkopierst.
+aus dem Internet zusammenkopierst. Hierbei ist auch die 
+Gefahr sehr hoch, ein schlechte Note wegen des Plagiats
+zu bekommen.
 
 Der wichtigste Bestandteil der Informatikerausbildung ist 
 es, Software zu konzipieren und nicht, sie *irgendwie* 
